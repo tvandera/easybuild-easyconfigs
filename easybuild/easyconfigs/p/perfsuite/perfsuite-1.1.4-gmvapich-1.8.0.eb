@@ -1,0 +1,30 @@
+easyblock = 'ConfigureMake'
+
+name = "perfsuite"
+version = '1.1.4'
+
+homepage = 'http://perfsuite.ncsa.illinois.edu/'
+description = """PerfSuite is a collection of tools, utilities, and libraries for software performance analysis where
+the primary design goals are ease of use, comprehensibility, interoperability, and simplicity."""
+
+toolchain = {'name': 'gmvapich2', 'version': '1.8.0'}
+
+source_urls = ['http://perfsuite.ncsa.illinois.edu/download/']
+sources = [SOURCE_TAR_GZ]
+
+dependencies = [
+    ('PAPI', '5.4.1'),
+#    ('Java', '1.7.0_60'),
+    ('tDOM', '0.8.3'),
+]
+
+
+configopts  = '--with-papi=$EBROOTPAPI --with-tdom=$EBROOTTDOM/lib'
+configopts += '--with-tclsh=$EBROOTCL/bin/tclsh8.5'
+
+sanity_check_paths = {
+    'files': ['bin/psprocess'],
+    'dirs': []
+}
+
+moduleclass = 'tools'
