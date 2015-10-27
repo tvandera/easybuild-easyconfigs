@@ -1,0 +1,24 @@
+easyblock = 'ConfigureMake'
+
+name = 'mpe2'
+version = '2.4.7'
+start_dir = 'mpe2-2.4.7'
+
+homepage = 'http://www.mcs.anl.gov/research/projects/perfvis/download/'
+description = """MPE is a software package for MPI (Message Passing Interface)
+programmers. The package provides users with a number of useful tools for their
+MPI programs."""
+
+toolchain = {'name': 'gmvapich2', 'version': '1.8.0'}
+
+preconfigopts = 'MPI_CC=mpicc MPI_F77=mpif77 '  
+
+source_urls = ['http://www.mpich.org/static/mpe/downloads/']
+sources = [SOURCELOWER_TGZ]
+
+sanity_check_paths = {
+    'files': ['bin/mpecc', 'include/mpe.h', 'lib/libmpe.a'],
+    'dirs': [],
+}
+
+moduleclass = 'tools'
