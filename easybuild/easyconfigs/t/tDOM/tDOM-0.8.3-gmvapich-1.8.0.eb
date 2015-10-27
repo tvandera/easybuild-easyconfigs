@@ -1,0 +1,21 @@
+easyblock = 'ConfigureMake'
+
+name = 'tDOM'
+version = '0.8.3'
+
+homepage = 'http://tdom.github.io/'
+description = """tDOM combines high performance XML data processing with easy
+and powerful Tcl scripting functionality. tDOM should be one of the fastest
+ways to manipulate XML with a scripting language and uses very little memory in
+the process""" 
+
+toolchain = {'name': 'gmvapich2', 'version': '1.8.0'}
+
+source_urls = ["http://github.com/downloads/tDOM/tdom/"]
+sources = [SOURCE_TGZ]
+
+dependencies = [('Tcl', '8.5.12')]
+
+configopts = '--with-tcl=$EBROOTTCL/lib --exec-prefix=%(installdir)s'
+
+moduleclass = 'lib'
