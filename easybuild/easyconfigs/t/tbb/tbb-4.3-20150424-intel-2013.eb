@@ -1,0 +1,28 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+easyblock = 'ConfigureMake'
+
+name = 'tbb'
+version = '4.3-20150424'
+
+homepage = 'https://www.threadingbuildingblocks.org/'
+description = """Intel® Threading Building Blocks (Intel® TBB) lets you easily
+write parallel C++ programs that take full advantage of multicore performance,
+that are portable and composable, and that have future-proof scalability."""
+
+toolchain = {'name': 'intel', 'version': '2013'}
+
+block = 'ConfigureMake';
+skipsteps = ['configure', 'install']
+buildopts = 'tbb tbbmalloc tbbproxy compiler=icc && mkdir -p %(installdir)s/lib && cp build/*_release/*.so* %(installdir)s/lib && cp -r include %(installdir)s/'
+
+source_urls = ['https://www.threadingbuildingblocks.org/sites/default/files/software_releases/source/']
+sources = ['tbb43_20150424oss_src.tgz']
+
+sanity_check_paths = {
+    'files': ["include/tbb/tbb.h"],
+    'dirs': []
+}
+
+moduleclass = 'lib'
