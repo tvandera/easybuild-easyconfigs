@@ -18,9 +18,11 @@ dependencies = [
     ('tDOM', '0.8.3'),
 ]
 
+patches = ['perfsuite-1.1.4-westmere+haswell.patch']
 
-configopts  = '--with-papi=$EBROOTPAPI --with-tdom=$EBROOTTDOM/lib'
-configopts += '--with-tclsh=$EBROOTCL/bin/tclsh8.5'
+configopts  = '--with-papi=$EBROOTPAPI --with-tdom=$EBROOTTDOM/lib '
+configopts += '--with-tclsh=$EBROOTTCL/bin/tclsh8.5 '
+configopts += '--without-libbfd '
 
 sanity_check_paths = {
     'files': ['bin/psprocess'],
