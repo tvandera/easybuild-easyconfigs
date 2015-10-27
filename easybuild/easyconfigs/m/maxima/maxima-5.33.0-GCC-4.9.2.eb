@@ -1,0 +1,29 @@
+easyblock = 'ConfigureMake'
+
+name = 'maxima'
+version = '5.33.0'
+
+homepage = 'http://maxima.sourceforge.net/'
+description = """Maxima is a system for the manipulation of symbolic and
+numerical expressions, including differentiation, integration, Taylor series,
+Laplace transforms, ordinary differential equations, systems of linear
+equations, polynomials, sets, lists, vectors, matrices and tensors. Maxima
+yields high precision numerical results by using exact fractions,
+arbitrary-precision integers and variable-precision floating-point numbers.
+Maxima can plot functions and data in two and three dimensions. """
+
+toolchain = {'name': 'GCC', 'version': '4.9.2'}
+
+source_urls = [ 'http://sourceforge.net/projects/maxima/files/Maxima-source/%(version)s-source' ]
+sources = [SOURCELOWER_TAR_GZ]
+
+dependencies = [ ('sbcl', '1.2.1', '', ('dummy', 'dummy')) ]
+
+configopts = "--enable-sbcl --with-sbcl=$EBROOTSBCL/bin/sbcl"
+
+sanity_check_paths = { 
+    'files': ['bin/maxima'],
+    'dirs': [],
+}
+
+moduleclass = 'math'
