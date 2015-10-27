@@ -27,3 +27,5 @@ dependencies = [
 osdependencies = [('openssl-devel', 'libssl-dev', 'libopenssl-devel')]
 
 moduleclass = 'lang'
+
+preconfigopts = "sed -i -e s/DYLD_FRAMEWORK_PATH/LD_LIBRARY_PATH/g' Makefile.pre.in && "
