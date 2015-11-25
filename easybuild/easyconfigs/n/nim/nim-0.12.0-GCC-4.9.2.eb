@@ -1,0 +1,23 @@
+easyblock = 'PackedBinary'
+
+name = 'nim'
+version = '0.12.0'
+
+homepage = 'http://nim-lang.org/'
+description = """Nim (formerly known as "Nimrod") is a statically typed,
+imperative programming language that tries to give the programmer ultimate
+power without compromises on runtime efficiency."""
+
+toolchain = {'name': 'GCC', 'version': '4.9.2'}
+
+source_urls = ['http://nim-lang.org/download/']
+sources = [SOURCELOWER_TAR_XZ]
+
+install_cmd = 'cd %(name)s-%(version)s && sh build.sh && sh install.sh %(installdir)s && mv %(installdir)s/nim/* %(installdir)s && rmdir %(installdir)s/nim'
+
+sanity_check_paths = {
+    'files': ['bin/nim' ],
+    'dirs': ['config', 'lib']
+}
+
+moduleclass = 'lang'
