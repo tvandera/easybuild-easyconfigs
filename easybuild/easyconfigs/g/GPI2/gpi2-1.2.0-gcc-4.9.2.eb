@@ -1,4 +1,4 @@
-easyblock = 'MakeCp'
+easyblock = 'Binary'
 
 name = 'GPI2'
 version = '1.2.0'
@@ -18,11 +18,7 @@ sanity_check_paths = {
     'dirs': []
 }
 
-buildopts = ' && mv bin/gaspi_run.ssh bin/gaspi_run'
-
-files_to_copy = [
-                        (["bin/gaspi_run","bin/ssh.spawner","bin/gaspi_cleanup", "bin/gaspi_logger"], "bin"),
-                        "lib64", "tests", "include"
-                ]
+install_cmd = "tar xfz %(name)s*.tar.gz && cd %(name)s* && "
+install_cmd += "sed -i -e 's/^make.\+tests/true/' install.sh && bash install.sh -p %(installdir)s "
 
 moduleclass = 'lang'
