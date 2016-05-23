@@ -1,0 +1,27 @@
+easyblock = 'CMakeMake'
+
+name = 'icnc'
+version = '1.0.100'
+
+homepage = 'https://icnc.github.io/'
+description = """Intel® Concurrent Collections for C++ is a C++ template
+library for letting C++ programmers implement CnC applications which run in
+parallel on shared and distributed memory."""
+
+toolchain = { 'name': 'foss', 'version':'2015a'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/icnc/icnc/archive/']
+
+preconfigopts  = "export CMAKE_LIBRARY_PATH=$CMAKE_LIBRARY_PATH:${TBBROOT}/lib && "
+
+dependencies = [
+    ('tbb', '4.4.2.152', '', ('dummy', 'dummy')),
+]
+
+sanity_check_paths = {
+    'files': ["include/cnc/cnc.h"],
+    'dirs': []
+}
+
+moduleclass = 'lib'
