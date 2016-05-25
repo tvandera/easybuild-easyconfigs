@@ -17,7 +17,7 @@ description = """IPython provides a rich architecture for interactive computing 
  Flexible, embeddable interpreters to load into your own projects.
  Easy to use, high performance tools for parallel computing."""
 
-toolchain = {'name': 'intel', 'version': '2016a'}
+toolchain = {'name': 'goolf', 'version': '1.7.20'}
 
 dependencies = [
     ('Python', '2.7.11'),
@@ -59,7 +59,7 @@ exts_list = [
         'source_urls': ['https://pypi.python.org/packages/source/t/tornado/'],
     }),
     ('MarkupSafe', '0.23', {
-        'source_urls': ['https://pypi.io/packages/source/M/MarkupSafe/'],
+        'source_urls': ['https://pypi.python.org/packages/source/M/MarkupSafe/'],
 	'modulename': 'markupsafe',
     }),
     ('Jinja2', '2.8', {
