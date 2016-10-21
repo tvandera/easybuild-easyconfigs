@@ -1,0 +1,28 @@
+easyblock = 'ConfigureMake'
+
+name = 'HDFS'
+version = '1.0.1'
+
+homepage = 'http://hadoop.apache.org/'
+description = """Hadoop Distributed File System"""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+sources = ['hadoop-%(version)s.tar.gz']
+source_urls = ['https://archive.apache.org/dist/hadoop/common/hadoop-%(version)s/']
+
+preconfigopts = 'chmod +x configure install-sh && '
+configopts = ' JVM_ARCH=tune=generic'
+installopts = '&& mkdir -p %(installdir)s/include && cp hdfs.h %(installdir)s/include'
+
+start_dir = 'src/c++/libhdfs'
+
+dependencies = [('Java', '1.7.0_80', '', ('dummy', ''))]
+
+sanity_check_paths = {
+    'files': ['include/hdfs.h', 'lib/libhdfs.so'],
+    'dirs' : []
+}
+
+
+moduleclass = 'lib'
