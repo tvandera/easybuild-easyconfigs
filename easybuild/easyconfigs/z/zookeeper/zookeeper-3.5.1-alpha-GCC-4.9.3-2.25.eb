@@ -1,0 +1,23 @@
+easyblock = 'ConfigureMake'
+
+name = 'zookeeper'
+version = '3.5.1-alpha'
+
+homepage = 'https://zookeeper.apache.org/'
+description = """Apache ZooKeeper is an effort to develop and maintain an
+open-source server which enables highly reliable distributed coordination."""
+
+toolchain = {'name': 'GCC', 'version': '4.9.3-2.25'}
+toolchainopts = {'pic': True}
+
+sources = [SOURCELOWER_TAR_GZ]
+source_urls = [('http://www-eu.apache.org/dist/zookeeper/zookeeper-%(version)s/')]
+
+start_dir = 'src/c'
+
+sanity_check_paths = {
+    'files': ['include/zookeeper/zookeeper.h', 'lib/libzookeeper_st.a', 'lib/libzookeeper_mt.a'],
+    'dirs': [],
+}
+
+moduleclass = 'lib'

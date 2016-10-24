@@ -1,0 +1,40 @@
+import os
+
+easyblock = 'CMakeMake'
+
+name = "PowerGraph"
+version = "2.2.1"
+
+homepage = 'https://github.com/tvandera/PowerGraph'
+description = """A framework for large-scale machine learning and graph computation."""
+
+toolchain = {'name': 'foss', 'version': '2016a'}
+
+source_urls = ['https://github.com/tvandera/PowerGraph/archive/']
+sources = ['v%(version)s.tar.gz']
+
+# Boost/1.59.0-foss-2016a-Python-2.7.11 Eigen zookeeper libevent OpenCV/2.4.12-foss-2016a HDFS
+dependencies = [
+                ('Boost', '1.59.0', '-Python-2.7.11'),
+                ('OpenCV', '2.4.12'),
+                ('gperftools', '2.5'),
+                ('HDFS', '1.0.1'),
+                ('zookeeper', '3.5.1-alpha', '', ('GCC', '4.9.3-2.25')),
+                ('libevent', '2.0.22', '', ('GNU', '4.9.3-2.25')),
+               ]
+
+builddependencies = [
+                ('CMake', '3.5.2'),
+                ('Eigen', '3.3-beta1', '', ('dummy', 'dummy')),
+]
+
+separate_build_dir = True
+
+configopts = '-DCMAKE_BUILD_TYPE=Release'
+
+sanity_check_paths = {
+    'files': ["bin/als", "include/graphlab.hpp", "lib/libgraphlab.a"],
+    'dirs': [],
+}
+
+moduleclass = 'lib'
