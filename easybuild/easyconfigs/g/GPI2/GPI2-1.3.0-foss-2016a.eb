@@ -9,7 +9,9 @@ description = "GPI2: Global Address Space Programming Interface v2"
 source_urls = ['https://github.com/cc-hpc-itwm/GPI-2/archive/']
 sources = ["v%(version)s.tar.gz"]
 
-dependencies = [ ( 'gawk', '4.0.2' ) ];
+dependencies = [ ( 'gawk', '4.0.2', '', ('GCC', '4.9.2')), ]
+
+osdependencies = [('libibverbs-dev', 'libibverbs-devel'),]
 
 toolchain = {'name': 'foss', 'version': '2016a'}
 
@@ -19,6 +21,6 @@ sanity_check_paths = {
 }
 
 install_cmd = "tar xfz v%(version)s.tar.gz && cd GPI* && "
-install_cmd += "sed -i -e 's/^make.\+tests/true/' install.sh && bash install.sh -p %(installdir)s --with-mpi "
+install_cmd += "sed -i -e 's/^make.\+tests/true/' install.sh && bash install.sh -p %(installdir)s --with-mpi --with-infiniband=/usr"
 
 moduleclass = 'lang'
