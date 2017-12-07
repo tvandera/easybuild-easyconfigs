@@ -1,0 +1,35 @@
+##
+# This file is an EasyBuild reciPY as per https://github.com/easybuilders/easybuild
+#
+# Copyright:: Copyright imec
+# License::   MIT/GPL
+# $Id$
+#
+
+easyblock = 'Tarball'
+
+name = 'rtg-tools'
+version = '3.8.4'
+versionsuffix = '-Java-%(javaver)s'
+
+homepage = 'https://github.com/RealTimeGenomics/rtg-tools'
+description = """RTG Tools includes several useful utilities for dealing with
+VCF files and sequence data, but probably the most interesting is the vcfeval
+command which performs sophisticated comparison of VCF files."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['https://github.com/RealTimeGenomics/rtg-tools/releases/download/']
+sources = ['%(version)s/%(name)s-%(version)s-nojre.zip']
+checksums = ['ad92b29333799f3e3313199a7ff800b10fba75d88d84503358d44fe9e6dfc488']
+
+dependencies = [('Java', '1.8.0_144')]
+
+modloadmsg = "To use the RTG tools run: java -jar $EBROOTRTGMINTOOLS/RTG.jar\n"
+
+sanity_check_paths = {
+    'files': ['RTG.jar'],
+    'dirs': [],
+}
+
+moduleclass = 'bio'
