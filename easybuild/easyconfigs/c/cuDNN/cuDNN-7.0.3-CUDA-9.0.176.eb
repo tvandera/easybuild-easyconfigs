@@ -6,8 +6,10 @@
 easyblock = 'Tarball'
 
 name = 'cuDNN'
-version = '6.0'
-cuda_version = '8.0.61'
+version = '7.0.3'
+cuda_version = '9.0.176'
+
+cuda_version_major_minor = '.'.join(cuda_version.split('.')[:2])
 
 versionsuffix = '-CUDA-%s' % cuda_version
 
@@ -19,7 +21,9 @@ toolchain = {'name': 'dummy', 'version': 'dummy'}
 
 # Nvidia developer registration required.
 # Download link: https://developer.nvidia.com/rdp/cudnn-download
-sources = ['%(namelower)s-8.0-linux-x64-v%(version)s.tgz']
+# Download as cudnn-9.0-linux-x64-v7.tgz, rename to cudnn-9.0-linux-x64-v7.0.3.tgz
+sources = ['%%(namelower)s-%s-linux-x64-v%%(version)s.tgz' % cuda_version_major_minor]
+checksums = ['09583e93110cee2bf76ea355e1d9c7c366a50ad858362064f7c927cc46209ef9']
 
 dependencies = [('CUDA', cuda_version)]
 

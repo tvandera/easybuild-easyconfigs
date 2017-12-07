@@ -6,7 +6,7 @@
 easyblock = 'Tarball'
 
 name = 'cuDNN'
-version = '6.0'
+version = '7.0'
 cuda_version = '8.0.61'
 
 versionsuffix = '-CUDA-%s' % cuda_version

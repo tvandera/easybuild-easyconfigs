@@ -1,0 +1,45 @@
+##
+# This is a contribution from Phoenix HPC Service, The University of Adelaide, Australia
+# Homepage: https://www.adelaide.edu.au/phoenix/
+#
+# Copyright::   adelaide.edu.au/phoenix
+# Authors::	Robert Qiao <robert.qiao@adelaide.edu.au>, Exe Escobedo <exequiel.sepulvedaescobedo@adelaide.edu.au>
+# License::	MIT 
+#
+# 2.12.1:
+# Adam Huffman
+# The Francis Crick Institute
+#
+##
+
+easyblock = 'JAR'
+
+name = 'picard'
+version = '2.12.1'
+versionsuffix = '-Java-%(javaver)s'
+
+homepage = 'http://sourceforge.net/projects/picard'
+description = """A set of tools (in Java) for working with next generation sequencing data in the BAM format."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+source_urls = ['https://github.com/broadinstitute/picard/releases/download/%(version)s']
+sources = [{
+    'filename': '%(name)s-%(version)s.jar',
+    'download_filename': '%(name)s.jar',
+}]
+
+checksums = ['7575dc7cfff80867072e886be7a48de6bed7f53fa9538ffa1d602ae7435d39d1']
+
+postinstallcmds = [' mv %(installdir)s/%(name)s-%(version)s.jar %(installdir)s/%(name)s.jar']
+
+dependencies = [('Java', '1.8.0_144')]
+
+sanity_check_paths = {
+    'files': ['picard.jar'],
+    'dirs': [],
+}
+
+modloadmsg = "To execute picard run: java -jar $EBROOTPICARD/%(name)s.jar"
+
+moduleclass = 'bio'

@@ -1,0 +1,20 @@
+
+name = 'IntelPython'
+intelversion = '2017.0.028'
+version = '2.7-2017.0.028'
+
+homepage = 'https://software.intel.com/en-us/intel-distribution-for-python'
+description = """Accelerate HPC and data analytics with high-performance Python*"""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+
+sources = ['l_python27_pu_2017.0.035.tgz']
+
+dontcreateinstalldir = 'True'
+
+# license file
+import os
+license_file = os.path.join(os.getenv('HOME'), "licenses", "intel", "license.lic")
+
+moduleclass = 'lang'

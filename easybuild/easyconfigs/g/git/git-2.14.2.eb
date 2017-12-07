@@ -1,0 +1,29 @@
+easyblock = 'ConfigureMake'
+
+name = 'git'
+version = '2.14.2'
+
+homepage = 'http://git-scm.com/'
+description = """Git is a free and open source distributed version control system designed
+to handle everything from small to very large projects with speed and efficiency."""
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+
+sources = ['v%(version)s.tar.gz']
+source_urls = ['https://github.com/git/git/archive']
+
+dependencies = [
+    ('cURL', '7.55.1'),
+    ('expat', '2.2.4'),
+    ('gettext', '0.19.8.1'),
+]
+
+
+preconfigopts = 'make configure && '
+
+sanity_check_paths = {
+    'files': ['bin/git'],
+    'dirs': [],
+}
+
+moduleclass = 'tools'

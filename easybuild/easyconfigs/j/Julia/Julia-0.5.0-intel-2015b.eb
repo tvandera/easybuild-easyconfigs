@@ -1,0 +1,49 @@
+# Author:: Jack Perdue <j-perdue@tamu.edu> - TAMU HPRC - http://sc.tamu.edu
+
+easyblock = 'ConfigureMake'
+
+name = 'Julia'
+version = '0.5.0'
+
+homepage = 'http://julialang.org/downloads/'
+description = """Julia is a high-level, high-performance dynamic programming language for technical computing, with syntax that is familiar to users of other technical computing environments. It provides a sophisticated compiler, distributed parallel execution, numerical accuracy, and an extensive mathematical function library."""
+
+sources = ['%s-%s.tar.gz' % (name, version)]
+source_urls = ['https://github.com/JuliaLang/%(namelower)s/releases/download/v%(version)s']
+
+toolchain = {'name': 'intel', 'version': '2015b'}
+toolchainopts = {'optarch': True, 'pic': True}
+
+dependencies = [
+#    ('libunwind', '1.1'),
+#    ('PCRE', '8.37'),
+#    # LIBM, BLAS, LAPACK, FFTW should come from MKL
+#    ('GMP', '6.0.0a'),
+    ('MPFR', '3.1.3'),
+#    ('arpack-ng', '3.2.0', '-mt'),
+#    ('SuiteSparse', '4.4.4', '-ParMETIS-4.0.3'),
+     ('zlib', '1.2.8'),
+# bare minimum follows (usually loaded by above)
+     ('bzip2', '1.0.6'),
+     ('ncurses', '5.9'),
+     ('M4', '1.4.17'),
+#     ('make', '3.82'),
+]
+
+skipsteps = ['configure']
+
+#prebuildopts = 'for x in USE_SYSTEM_LIBUNWIND=1 USE_SYSTEM_PCRE=1 USE_SYSTEM_LIBM=1 USE_SYSTEM_BLAS=1 USE_SYSTEM_LAPACK=1 USE_SYSTEM_FFTW=1 USE_SYSTEM_GMP=1 USE_SYSTEM_MPFR=1 USE_SYSTEM_ARPACK=1 USE_SYSTEM_SUITESPARSE=1 USE_SYSTEM_ZLIB=1 USE_INTEL_MKL=1 USE_INTEL_MKL_FFT=1 USE_INTEL_LIBM=1 USEICC=1 USEIFC=1 ; do echo $x >> Make.user ; done && sed -e "s,SUITESPARSE_INC = -I /usr/include/suitesparse,SUITESPARSE_INC = -I $EBROOTSUITESPARSE/CHOLMOD/include," -i deps/Makefile && SSLIB="" && for x in `find $EBROOTSUITESPARSE -name lib` ; do SSLIB="$SSLIB -L $x" ; done ; sed -e "s,SUITESPARSE_LIB = ,SUITESPARSE_LIB = $SSLIB ," -i deps/Makefile && '
+
+# bare minimum follows
+prebuildopts = 'for x in USE_SYSTEM_LIBM=1 USE_SYSTEM_BLAS=1 USE_SYSTEM_LAPACK=1 USE_SYSTEM_FFTW=1  USE_SYSTEM_ZLIB=1 USE_INTEL_MKL=1 USE_INTEL_MKL_FFT=1 USE_INTEL_LIBM=1 USEICC=1 USEIFC=1 USE_SYSTEM_MPFR=1 ; do echo $x >> Make.user ; done && echo prefix=%(installdir)s >> Make.user && '
+
+sanity_check_paths = {
+    'files': ['bin/julia'],
+    'dirs': ['bin', 'include/julia', 'lib/julia'],
+}
+
+#parallel = 1;
+
+moduleclass = 'lang'
+#  EOF
+

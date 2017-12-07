@@ -9,7 +9,7 @@ and powerful Tcl scripting functionality. tDOM should be one of the fastest
 ways to manipulate XML with a scripting language and uses very little memory in
 the process""" 
 
-toolchain = {'name': 'gmvapich2', 'version': '1.8.0'}
+toolchain = {'name': 'foss', 'version': '2016a'}
 
 source_urls = ["http://github.com/downloads/tDOM/tdom/"]
 sources = [SOURCE_TGZ]
@@ -19,8 +19,8 @@ dependencies = [('Tcl', '8.5.12')]
 configopts = '--with-tcl=$EBROOTTCL/lib --exec-prefix=%(installdir)s'
 
 sanity_check_paths = {
-    'files': ['bin/timbl', 'lib/libtimbl.%s' % SHLIB_EXT, 'lib/libtimbl.a'],
-    'dirs': ['bin']
+    'files': ['include/tdom.h'],
+    'dirs': ['lib/tdom0.8.3']
 }
 
 

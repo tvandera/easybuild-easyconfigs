@@ -14,6 +14,7 @@ sources = ['v%(version)s.tar.gz']
 source_urls = ['https://github.com/icnc/icnc/archive/']
 
 preconfigopts  = "export CMAKE_LIBRARY_PATH=$CMAKE_LIBRARY_PATH:${TBBROOT}/lib && "
+configopts  = "-DBUILD_LIBS_FOR_MPI=TRUE -DMPIROOT=$EBROOTOPENMPI -DLIBRARY_OUTPUT_PATH=lib -DLIB=%(installdir)s/lib"
 
 dependencies = [
     ('tbb', '4.4.2.152', '', ('dummy', 'dummy')),

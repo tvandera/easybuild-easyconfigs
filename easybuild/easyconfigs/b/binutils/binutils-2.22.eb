@@ -1,0 +1,17 @@
+easyblock = 'ConfigureMake'
+
+name = 'binutils'
+version = '2.22'
+
+homepage = 'http://directory.fsf.org/project/binutils/'
+description = "binutils-2.22: GNU binary utilities"
+
+toolchain = {'name': 'dummy', 'version': 'dummy'}
+toolchainopts = {'pic': True}
+
+sources = ['binutils-%s.tar.bz2' % version]
+source_urls = [GNU_SOURCE]
+
+configopts = '--enable-shared'
+
+moduleclass = 'tools'
