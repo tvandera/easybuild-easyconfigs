@@ -15,7 +15,7 @@ sources = [SOURCELOWER_TAR_XZ]
 checksums = ['1353a4cf5227299294955d0c6232326b346b087ebac6496241d54ca5d2e2abc3']
 
 dependencies = [
-    ('X11', '20180131'),
+    ('X11', '20180401'),
     ('GLib', '2.54.3'),
     ('cairo', '1.14.12'),
     ('HarfBuzz', '1.7.5'),

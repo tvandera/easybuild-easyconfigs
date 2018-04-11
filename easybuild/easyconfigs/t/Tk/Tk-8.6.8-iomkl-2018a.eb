@@ -18,7 +18,7 @@ checksums = [
 ]
 
 dependencies = [
-    ('X11', '20180131'),
+    ('X11', '20180401'),
     ('Tcl', version),
     ('zlib', '1.2.11'),
 ]
