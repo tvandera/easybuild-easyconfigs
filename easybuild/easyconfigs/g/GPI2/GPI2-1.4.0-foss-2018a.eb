@@ -1,0 +1,25 @@
+easyblock = 'ConfigureMake'
+
+name = 'GPI2'
+version = '1.4.0'
+
+homepage = 'http://www.gpi-site.com/gpi2/'
+description = "GPI2: Global Address Space Programming Interface v2"
+
+source_urls = ['https://github.com/cc-hpc-itwm/GPI-2/archive/']
+sources = ["v1.4.0.tar.gz"]
+checksums = ['3b8ffb45346b2fe56aaa7ba15a515e62f9dff45a28e6a014248e20094bbe50a1']
+
+osdependencies = [('libibverbs-dev', 'libibverbs-devel'),]
+
+toolchain = {'name': 'foss', 'version': '2018a'}
+
+preconfigopts = './autogen.sh && '
+configopts = '--with-mpi'
+
+sanity_check_paths = {
+    'files': ['bin/gaspi_run'],
+    'dirs': []
+}
+
+moduleclass = 'lang'
