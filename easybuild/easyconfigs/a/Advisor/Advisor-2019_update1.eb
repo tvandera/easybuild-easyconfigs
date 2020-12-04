@@ -1,0 +1,22 @@
+name = 'Advisor'
+version = '2019_update1'
+
+homepage = 'https://software.intel.com/intel-advisor-xe'
+description = """Vectorization Optimization and Thread Prototyping
+ - Vectorize & thread code or performance “dies”
+ - Easy workflow + data + tips = faster code faster
+ - Prioritize, Prototype & Predict performance gain
+ """
+
+toolchain = SYSTEM
+
+source_urls = ['https://registrationcenter-download.intel.com/akdlm/irc_nas/tec/15084/']
+sources = ['advisor_%(version)s.tar.gz']
+checksums = ['0009d3f78a8b2ed450da6ac1b11e78ee9c9f0769b6c42fdc1e11ff46fefdd5a7']
+
+dontcreateinstalldir = True
+
+# license file
+license_file = HOME + '/licenses/intel/license.lic'
+
+moduleclass = 'perf'

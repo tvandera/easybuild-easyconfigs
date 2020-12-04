@@ -1,0 +1,24 @@
+easyblock = 'Binary'
+
+name = 'GPI2'
+version = 'next'
+
+homepage = 'http://www.gpi-site.com/gpi2/'
+description = "GPI2: Global Address Space Programming Interface v2"
+
+source_urls = ['https://github.com/cc-hpc-itwm/GPI-2/archive/']
+sources = ["next.zip"]
+
+osdependencies = [('libibverbs-dev', 'libibverbs-devel'),]
+
+toolchain = {'name': 'intel', 'version': '2018a'}
+
+sanity_check_paths = {
+    'files': ['bin/gaspi_run'],
+    'dirs': []
+}
+
+install_cmd = "unzip next.zip && cd GPI* && "
+install_cmd += "sed -i -e 's/^make.\+tests/true/' install.sh && bash install.sh -p %(installdir)s --with-mpi --with-infiniband=/usr"
+
+moduleclass = 'lang'
