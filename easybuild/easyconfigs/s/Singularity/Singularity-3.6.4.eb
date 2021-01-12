@@ -1,0 +1,35 @@
+easyblock = 'ConfigureMake'
+
+name = 'Singularity'
+version = '3.6.4'
+
+homepage = 'http://singularity.lbl.gov'
+description = """Singularity is a portable application stack packaging and runtime utility."""
+
+toolchain = SYSTEM
+
+source_urls = ['https://github.com/singularityware/singularity/archive/']
+sources = ['v%(version)s.tar.gz']
+
+builddependencies = [('Go', '1.14.1', '', ('dummy',''))]
+
+skipsteps = ['configure']
+prebuildopts = 'echo %(version)s >VERSION && CFLAGS="-O2 -ftree-vectorize" ./mconfig --prefix=%(installdir)s && cd builddir &&'
+preinstallopts = 'cd builddir &&'
+
+sanity_check_paths = {
+    'files': ['bin/run-singularity', 'bin/singularity', 'etc/singularity/singularity.conf',
+              'libexec/singularity/bin/starter-suid'],
+    'dirs': ['etc', 'libexec/singularity'],
+}
+
+# next steps after installation
+# INSTALLATION_PATH=your_installation_path
+# chown root:root $INSTALLATION_PATH/Singularity/*/etc/singularity/singularity.conf
+# chown root:root $INSTALLATION_PATH/Singularity/*/libexec/singularity/bin/*-suid
+# chown root:root $INSTALLATION_PATH/Singularity/*/var/singularity/mnt/container
+# chmod 4755 $INSTALLATION_PATH/Singularity/*/libexec/singularity/bin/*-suid
+# chmod +s $INSTALLATION_PATH/Singularity/*/libexec/singularity/bin/*-suid
+
+moduleclass = 'tools'
+
