@@ -57,6 +57,7 @@ dependencies = [
 
 configopts = "-Dplatforms=x11 -Dosmesa=gallium -Ddri-drivers='' -Dvulkan-drivers='' "
 configopts += "-Dllvm=true -Dshared-llvm=true -Dlibunwind=true -Dglvnd=true"
+configopts += " -Dgallium-drivers=swrast"
 
 # Easybuild will automatically add appropriate Gallium drivers for the processor architecture of the host
 # If you need a different configuration, it possible to override those values by setting your own configopts
