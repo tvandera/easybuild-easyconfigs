@@ -24,12 +24,11 @@ sanity_check_paths = {
 }
 
 # next steps after installation
-# INSTALLATION_PATH=your_installation_path
-# chown root:root $INSTALLATION_PATH/Singularity/*/etc/singularity/singularity.conf
-# chown root:root $INSTALLATION_PATH/Singularity/*/libexec/singularity/bin/*-suid
-# chown root:root $INSTALLATION_PATH/Singularity/*/var/singularity/mnt/container
-# chmod 4755 $INSTALLATION_PATH/Singularity/*/libexec/singularity/bin/*-suid
-# chmod +s $INSTALLATION_PATH/Singularity/*/libexec/singularity/bin/*-suid
+
+# module load Singularity
+# sudo chown -R root:root $EBROOTSINGULARITY
+# sudo chmod 4755 $EBROOTSINGULARITY/libexec/singularity/bin/*-suid
+# sudo chmod +s $EBROOTSINGULARITY/libexec/singularity/bin/*-suid
 
 moduleclass = 'tools'
 
