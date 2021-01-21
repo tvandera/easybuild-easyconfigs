@@ -28,6 +28,8 @@ sources = [
 patches = [
     'GCCcore-6.2.0-fix-find-isl.patch',
     'GCCcore-7.3.0-remove-glibc-ustat.patch',
+    'glibc-2.31-libsanitizer-1.patch',
+    'glibc-2.31-libsanitizer-2-gcc-7.patch',
 ]
 checksums = [
     'fa06e455ca198ddc11ea4ddf2a394cf7cfb66aa7e0ab98cc1184189f1d405870',  # gcc-7.3.0.tar.gz
